@@ -18,10 +18,10 @@ const processedMessages = new Set();
 app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
-
+console.log("VK BODY:", JSON.stringify(data, null, 2));
     if (data.type === "confirmation") {
-      return res.send(VK_CONFIRMATION_CODE);
-    }
+  return res.status(200).send(String(VK_CONFIRMATION_CODE));
+}
 
     if (data.type === "message_new") {
       const message = data.object.message;
